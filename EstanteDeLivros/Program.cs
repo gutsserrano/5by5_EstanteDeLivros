@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-
-namespace EstanteDeLivros
+﻿namespace EstanteDeLivros
 {
     internal class Program
     {
