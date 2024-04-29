@@ -8,30 +8,38 @@ namespace EstanteDeLivros
         {
             Estante estante = new Estante();
 
-            Livro l1 = CriarLivro();
-
-            estante.AdicionarLivro(l1);
-
-            estante.ImprimirEstante();
-
             int option;
             do
             {
+                Console.Clear();
                 option = Menu();
                 switch (option)
                 {
                     case 1:
+                        estante.AdicionarLivro(CriarLivro());
+                        Console.ReadKey();
                         break;
                     case 2:
+                        estante.ImprimirEstante();
+                        Console.WriteLine("\nQual livro você deseja remover (digite o índice)?");
+                        estante.RemoverLivro(int.Parse(Console.ReadLine()));
+                        Console.ReadKey();
                         break;
                     case 3:
+                        estante.ImprimirEstante();
+                        Console.ReadKey();
+                        break;
+                    case 4:
+                        Console.WriteLine("\nQual livro voce deseja buscar (digite o índice)?");
+                        estante.ImprimirPorIndice(int.Parse(Console.ReadLine()));
+                        Console.ReadKey();
                         break;
                     default:
                         break;
                 }
 
 
-            } while (option != 4);
+            } while (option != 5);
 
             Livro CriarLivro()
             {
@@ -81,13 +89,14 @@ namespace EstanteDeLivros
                 int option;
                 do
                 {
-                    Console.WriteLine("Estante de livros:");
+                    Console.WriteLine("\nEstante de livros:");
                     Console.WriteLine("1 - Adicionar Livro");
-                    Console.WriteLine("2 - Imprimir todos os livros");
-                    Console.WriteLine("3 - Imprimir por índice");
-                    Console.WriteLine("4 - sair");
+                    Console.WriteLine("2 - Remover Livro");
+                    Console.WriteLine("3 - Imprimir todos os livros");
+                    Console.WriteLine("4 - Imprimir por índice");
+                    Console.WriteLine("5 - sair");
                     option = int.Parse(Console.ReadLine());
-                } while (option < 1 || option > 4);
+                } while (option < 1 || option > 5);
 
                 return option;
             }
