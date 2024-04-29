@@ -10,7 +10,7 @@ namespace EstanteDeLivros
     {
         public Livro[] estante;
         private int qtdLivros;
-        private int MAXLIVROS = 2;
+        private int MAXLIVROS = 10;
 
         public Estante()
         {
