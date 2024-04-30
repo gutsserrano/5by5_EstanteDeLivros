@@ -1,6 +1,6 @@
 # Estante de Livros
 Criar uma estante de livro no qual a estante é um vetor de 10 livros
-## Requisistos de Livro
+## Requisitos de Livro
 * Título
 * Autor ou autores
 * Data de lançamento
