@@ -81,26 +81,17 @@ namespace EstanteDeLivros
 
         public void ImprimirPorIndice(int i)
         {
-            bool existe = false;
-
             Console.Clear();
-            for (int j = 0; j < qtdLivros && !existe; j++)
+            
+            if(i >= 0 && i < qtdLivros)
             {
-                if(j == i)
-                {
-                    existe = true;
-                    Console.WriteLine($"\n=========Livro {i}===========\n");
-                    Console.WriteLine(this.estante[j].ImprimirLivro());
-                }
-            }
-
-            if (!existe)
-            {
-                Console.WriteLine("\n**Livro não encontrado**\n");
+                Console.WriteLine($"\n=========Livro {i}===========\n");
+                Console.WriteLine(this.estante[i].ImprimirLivro());
+                Console.WriteLine($"\n=============================\n");
             }
             else
             {
-                Console.WriteLine($"\n=============================\n");
+                Console.WriteLine("\n**Livro não encontrado**\n");
             }
         }
     }
