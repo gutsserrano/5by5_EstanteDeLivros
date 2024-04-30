@@ -24,10 +24,13 @@
                         Console.ReadKey();
                         break;
                     case 3:
+                        EditarLivro();
+                        break;
+                    case 4:
                         estante.ImprimirEstante();
                         Console.ReadKey();
                         break;
-                    case 4:
+                    case 5:
                         Console.WriteLine("\nQual livro voce deseja buscar (digite o índice)?");
                         estante.ImprimirPorIndice(int.Parse(Console.ReadLine()));
                         Console.ReadKey();
@@ -37,7 +40,7 @@
                 }
 
 
-            } while (option != 5);
+            } while (option != 6);
 
             Livro CriarLivro()
             {
@@ -92,6 +95,44 @@
 
             }
 
+            void EditarLivro()
+            {
+                int input, op;
+
+                Console.WriteLine("\nQual livro voce deseja editar (digite o índice)?");
+                input = int.Parse(Console.ReadLine());
+                bool aux = estante.ImprimirPorIndice(input);
+                if (aux)
+                {
+                    op = MenuEditar();
+                    estante.EditarLivro(op, input);
+                }
+                else
+                {
+                    Console.ReadKey();
+                }
+            }
+
+            int MenuEditar()
+            {
+                int option;
+                do
+                {
+                    Console.WriteLine("\nEditar Livro:\n");
+                    Console.WriteLine("1 - Título");
+                    Console.WriteLine("2 - Autores");
+                    Console.WriteLine("3 - Data de lançamento");
+                    Console.WriteLine("4 - Editora");
+                    Console.WriteLine("5 - Edição");
+                    Console.WriteLine("6 - ISBN");
+                    Console.WriteLine("7 - QTD páginas");
+                    Console.WriteLine("8 - Cancelar");
+                    option = int.Parse(Console.ReadLine());
+                } while (option < 1 || option > 8);
+
+                return option;
+            }
+
             int Menu()
             {
                 int option;
@@ -100,11 +141,12 @@
                     Console.WriteLine("\nEstante de livros:");
                     Console.WriteLine("1 - Adicionar Livro");
                     Console.WriteLine("2 - Remover Livro");
-                    Console.WriteLine("3 - Imprimir todos os livros");
-                    Console.WriteLine("4 - Imprimir por índice");
-                    Console.WriteLine("5 - sair");
+                    Console.WriteLine("3 - Editar Livro");
+                    Console.WriteLine("4 - Imprimir todos os livros");
+                    Console.WriteLine("5 - Imprimir por índice");
+                    Console.WriteLine("6 - sair");
                     option = int.Parse(Console.ReadLine());
-                } while (option < 1 || option > 5);
+                } while (option < 1 || option > 6);
 
                 return option;
             }

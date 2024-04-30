@@ -48,9 +48,15 @@ namespace EstanteDeLivros
             return this.titulo;
         }
 
-        public void setAutor(string a) 
+        public void addAutor(string a) 
         {
             this.autores[qtdAutores++] = a;
+        }
+
+        public void setAutores(string[] autores)
+        {
+            this.autores = autores;
+            qtdAutores = autores.Length;
         }
 
         public string getAutores()
