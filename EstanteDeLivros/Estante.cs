@@ -8,7 +8,7 @@ namespace EstanteDeLivros
 {
     public class Estante
     {
-        public Livro[] estante;
+        private Livro[] estante;
         private int qtdLivros;
         private int MAXLIVROS = 10;
 
@@ -36,23 +36,26 @@ namespace EstanteDeLivros
         {
             bool existe = false;
 
-            for(int j = 0; j < qtdLivros - 1; j++)
+            if (qtdLivros != 0)
             {
-                if(j == i)
+                for (int j = 0; j < qtdLivros - 1; j++)
+                {
+                    if (j == i)
+                    {
+                        existe = true;
+                    }
+
+                    if (existe)
+                    {
+                        estante[j] = estante[j + 1];
+                    }
+                }
+                if (i == qtdLivros - 1)
                 {
                     existe = true;
                 }
-
-                if (existe)
-                {
-                    estante[j] = estante[j + 1];
-                }
             }
-
-            if(i == qtdLivros - 1)
-            {
-                existe = true;
-            }
+            
 
             if (existe)
             {

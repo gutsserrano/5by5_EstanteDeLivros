@@ -41,17 +41,20 @@
 
             Livro CriarLivro()
             {
-                Livro livro = new Livro();
+                string titulo, editora, isbn;
+                string[] autores, auxAutores = new string[5];
+                int edicao, paginas;
+                DateOnly lancamento;
 
                 Console.WriteLine("\nTitulo:");
-                livro.DefinirTitulo(Console.ReadLine());
+                titulo = Console.ReadLine();
 
                 int counter = 0;
                 string aux = "";
                 do
                 {
                     Console.WriteLine($"\nAutor {counter + 1}:");
-                    livro.DefinirAutor(Console.ReadLine());
+                    auxAutores[counter] = Console.ReadLine();
                     counter++;
 
                     if (counter < 5)
@@ -63,22 +66,29 @@
                     }
                 } while (aux == "s" && counter < 5);
 
-                Console.WriteLine("\nData de lançamento (dd/mm/aaaa):");
-                livro.DefinirLancamento(DateOnly.Parse(Console.ReadLine()));
+                // copia os valores de auxAutores para autores com o tamanho correto para impressão
+                autores = new string[counter];
+                for(int i = 0; i < counter; i++)
+                {
+                    autores[i] = auxAutores[i];
+                }
+
+                Console.WriteLine("\nData de lançamento:");
+                lancamento = DateOnly.Parse(Console.ReadLine());
 
                 Console.WriteLine("\nEditora:");
-                livro.DefinirEditora(Console.ReadLine());
+                editora = Console.ReadLine();
 
                 Console.WriteLine("\nEdição:");
-                livro.DefinirEdicao(int.Parse(Console.ReadLine()));
+                edicao = int.Parse(Console.ReadLine());
 
                 Console.WriteLine("\nISBN:");
-                livro.DefinirIsbn(Console.ReadLine());
+                isbn = Console.ReadLine();
 
                 Console.WriteLine("\nQuantidade de páginas:");
-                livro.DefinirQtdPaginas(int.Parse(Console.ReadLine()));
+                paginas = int.Parse(Console.ReadLine());
 
-                return livro;
+                return new(titulo, autores, lancamento, editora, edicao, isbn, paginas);
 
             }
 
