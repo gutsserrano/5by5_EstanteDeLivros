@@ -60,7 +60,7 @@ namespace EstanteDeLivros
 
         public string ImprimirLivro()
         {
-            string retorno = "Titulo: " + this.titulo
+            string livro = "Titulo: " + this.titulo
                 + ImprimirAutores()
                 + "\nData de lançamento: " + this.lancamento
                 + "\nEditora: " + this.editora
@@ -68,19 +68,26 @@ namespace EstanteDeLivros
                 + "\nISBN: " + this.isbn
                 + "\nQtd páginas: " + this.qtdPaginas;
 
-            return retorno;
+            return livro;
         }
 
         public string ImprimirAutores()
         {
-            string retorno = "\nAutores: ";
+            string autor = "\nAutores: ";
 
             for(int i = 0; i < qtdAutores; i++)
             {
-                retorno += autores[i] + ", ";
+                if(i == qtdAutores - 1)
+                {
+                    autor += autores[i];
+                }
+                else
+                {
+                    autor += autores[i] + ", ";
+                }
             }
 
-            return retorno;
+            return autor;
         }
     }
 }
